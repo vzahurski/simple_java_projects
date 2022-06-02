@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 /**
  * Class to validate a URL by various methods.
  * @autor Valery Zahurski
- * @version 1
+ * @version 2
  */
 public class UrlMultiValidator {
     /**
@@ -24,10 +24,7 @@ public class UrlMultiValidator {
             new URL(url).toURI();
             return true;
         }
-        catch (URISyntaxException exception) {
-            return false;
-        }
-        catch (MalformedURLException exception) {
+        catch (Exception exception) {
             return false;
         }
     }
