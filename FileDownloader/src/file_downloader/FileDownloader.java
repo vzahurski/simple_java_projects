@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  * By default, downloading a file to a directory with the class FileDownloader (in case localDir = "").
  *
  * @autor Valery Zahurski
- * @version 2
+ * @version 2.1
  */
 public class FileDownloader {
     private URL url;
@@ -60,7 +60,7 @@ public class FileDownloader {
     public void download(String urlAddress, String localDir) throws Exception {
 
         try {
-            if (!UrlMultiValidator.urlValidUsingURL(urlAddress)) {
+            if (!UrlMultiValidator.urlValidUsingApacheValidator(urlAddress)) {
                 throw new UrlNotValidException("The URL '" + urlAddress + "' isn't valid.");
             }
             this.url = new URL(urlAddress); // To create URL objects for urlAddress

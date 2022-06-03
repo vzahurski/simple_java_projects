@@ -1,15 +1,14 @@
 package file_downloader;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.commons.validator.routines.UrlValidator;
 
 /**
  * Class to validate a URL by various methods.
  * @autor Valery Zahurski
- * @version 2
+ * @version 2.1
  */
 public class UrlMultiValidator {
     /**
@@ -43,5 +42,9 @@ public class UrlMultiValidator {
         return matcher.matches();
     }
     // Using Apache Commons Validator https://www.techiedelight.com/validate-url-java/
-    // Error in import org.apache.commons.validator.routines.UrlValidator;
+    // Download https://mvnrepository.com/artifact/commons-validator/commons-validator/1.7
+    public static boolean urlValidUsingApacheValidator(String url)
+    {
+         return new UrlValidator().isValid(url);
+    }
 }
