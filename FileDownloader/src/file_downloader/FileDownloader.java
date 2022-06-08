@@ -93,7 +93,8 @@ public class FileDownloader {
         Scanner console = new Scanner(System.in);
         String urlAddress = console.nextLine().trim();
         // http://pm1.narvii.com/7119/c448790dca55b08e4f01376bf5d21ed220701f0ar1-1200-795v2_uhq.jpg
-        String localDir = "".trim(); // By default, downloading a file to a directory with the class FileDownloader
+        System.out.println("Enter the path of local directory:");
+        String localDir = console.nextLine().trim(); // d:\
         new FileDownloader().download(urlAddress,localDir);
     }
 }
