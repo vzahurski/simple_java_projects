@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// Аннотация @Service говорит спрингу, что данный класс является сервисом. Это специальный тип классов, в котором
+// реализуется некоторая бизнес логика приложения. Впоследствии, благодаря этой аннотации Spring будет предоставлять
+// нам экземпляр данного класса в местах, где это, нужно с помощью Dependency Injection.
 @Service
 public class ClientServiceImpl implements ClientService {
 
