@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import simple_java_projects.rest_example.model.Client;
 import simple_java_projects.rest_example.service.ClientService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 // @RestController — говорит спрингу, что данный класс является REST контроллером.
@@ -39,7 +40,7 @@ public class ClientController {
     // контроллера клиента. После чего возвращаем статус 201 Created, создав новый объект ResponseEntity и передав в
     // него нужное значение кода возврата HttpStatus.
     @PostMapping(value = "/clients")
-    public ResponseEntity<?> create(@RequestBody Client client) {
+    public ResponseEntity<?> create(@RequestBody Client client) throws SQLException {
         clientService.create(client);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -52,7 +53,7 @@ public class ClientController {
     // не пуст, мы возвращаем c помощью класса ResponseEntity сам список клиентов и HTTP статус 200 OK.
     // Иначе мы возвращаем просто HTTP статус 404 Not Found.
     @GetMapping(value = "/clients")
-    public ResponseEntity<List<Client>> read() {
+    public ResponseEntity<List<Client>> read() throws SQLException {
         final List<Client> clients = clientService.readAll();
 
         return clients != null &&  !clients.isEmpty()
@@ -68,7 +69,7 @@ public class ClientController {
     // возвращаем либо статус 200 OK и сам объект Client, либо просто статус 404 Not Found,
     // если клиента с таким id не оказалось в системе.
     @GetMapping(value = "/clients/{id}")
-    public ResponseEntity<Client> read(@PathVariable(name = "id") int id) {
+    public ResponseEntity<Client> read(@PathVariable(name = "id") int id) throws SQLException {
         final Client client = clientService.read(id);
 
         return client != null
@@ -77,7 +78,7 @@ public class ClientController {
     }
 
     @PutMapping(value = "/clients/{id}")
-    public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody Client client) {
+    public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody Client client) throws SQLException {
         final boolean updated = clientService.update(client, id);
 
         return updated
@@ -86,7 +87,7 @@ public class ClientController {
     }
 
     @DeleteMapping(value = "/clients/{id}")
-    public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
+    public ResponseEntity<?> delete(@PathVariable(name = "id") int id) throws SQLException {
         final boolean deleted = clientService.delete(id);
 
         return deleted
