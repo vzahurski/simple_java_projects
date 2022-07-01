@@ -18,6 +18,7 @@ import java.util.List;
 public class ClientServiceJdbcImpl implements ClientService{
     // Соединение к базе данных, где хранятся клиенты. Оно единственно для всех объектов типа ClientServiceJdbcImpl
     private static final Connection connection = JdbcManager.getConnection();
+
     @Override
     public void create(Client client) throws SQLException {
         // Запрос с указанием мест для параметров в виде знака "?"
