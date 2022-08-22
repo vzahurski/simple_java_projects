@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'simple_java_projects'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    // mavenCentral()
+}
+
+dependencies {
+    // Библиотека Using Apache Commons Validator указана как зависимость
+    implementation 'commons-validator:commons-validator:1.7'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    // Use JUnit Jupiter test framework
+    useJUnitPlatform()
+}
+
+application {
+    // Входная точка
+    mainClassName = 'file_downloader.FileDownloader'
+}
+
+jar {
+    manifest.attributes("Main-Class": mainClassName);
+}
+
