@@ -10,13 +10,17 @@ public class Main {
         // а в классах конфигурации прописано, какие пакеты сканируем для обнаружения компонентов
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.apress.springrecipes.sequence");
-        // Достаем из контекста бин по ключу SequenceDao.class.
-        // Хотя это только интерфейс, который реализован классом SequenceDaoImpl, помеченный @Component("sequenceDao")
-        // SequenceDao sequenceDao = context.getBean(SequenceDao.class);
+        // Интерфейс является классом, поэтому имеет смысл SequenceDao.class , несмотря на то что SequenceDao - интерфейс
+        // Переменную типа SequenceDaoImpl можно положить в переменную типа интерфейса SequenceDao
+        // SequenceDao как бы родительский класс по отношению к SequenceDaoImpl - для него Спрингом будет создан бин компонент
+        // Вопрос: Мы можем использовать в качестве ключа в контексте родительские классы для класса помеченного @Component?
+        // Что если у нас два класса помечено @Component, которые реализуют интерфейс SequenceDao?
+        // Попробовал => исключение с непонятным стектрейсом. Хитрая ошибка
 
-        // Вопрос. Объекты типа интерфейс извлекаются из контекста по данным класса, которые реализуют этот интерфейс
-        // Этот класс должен быть помечен @Component
+        // Достаем из контекста бин по ключу родительского класса интерфейс SequenceDao.class.
+        // SequenceDao sequenceDao = context.getBean(SequenceDao.class);
         SequenceDao sequenceDao = (SequenceDao) context.getBean("sequenceDao");
+        System.out.println(sequenceDao.getClass()); // com.apress.springrecipes.sequence.SequenceDaoImpl
 
         System.out.println(sequenceDao.getNextValue("IT"));
         System.out.println(sequenceDao.getNextValue("IT"));
