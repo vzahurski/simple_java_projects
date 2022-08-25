@@ -1,0 +1,46 @@
+plugins {
+    id 'java'        // Подключаем плагин java
+    id 'application' // Подключаем плагин application
+}
+
+// Это переменные из плагина java, показывают, какая версия jdk нам нужна при сборке
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
+
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+application {
+    // mainClassName указывает главный класс нашего приложения и используется плагином
+    // application в задаче run. Именно этот класс будет запущен.
+    mainClassName = 'com.apress.springrecipes.sequence.Main'
+}
+
+// Он также относится к плагину java. Содержит в себе дополнительную информацию для
+// сборки jar-файла. В данном случае мы добавляем в манифест главный класс,
+// воспользовавшись объявленной выше переменной mainClassName.
+jar {
+    manifest.attributes("Main-Class": mainClassName);
+}
+
+group 'simple_java_projects'
+version '1.0-SNAPSHOT'
+
+repositories { // В этом блоке мы подключаем репозиторий Maven.
+    mavenCentral()
+}
+
+dependencies { // Этот блок содержит зависимости нашего приложения
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.springframework:spring-core:5.3.22'
+    implementation 'org.springframework:spring-beans:5.3.22'
+    implementation 'org.springframework:spring-context:5.3.22'
+}
+
+test {
+    systemProperty "file.encoding", "utf-8"
+    useJUnitPlatform()
+}
