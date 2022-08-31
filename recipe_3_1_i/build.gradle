@@ -11,6 +11,14 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
+// Указываем, что нужно создать не jar, а war файл, который копирую в папку d:\tomcat_10\webapps\
+// tomcat автоматически распакует ее в каталог с именем файла
+apply plugin:'war'
+
+war {
+    archiveName 'app.war'
+}
+
 group 'simple_java_projects'
 version '1.0-SNAPSHOT'
 

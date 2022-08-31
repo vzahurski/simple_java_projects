@@ -11,6 +11,8 @@ import javax.servlet.ServletRegistration;
 import java.util.Set;
 
 // http://localhost:8080/court/welcome
+// http://localhost:8080/recipe_3_1_i-1.0-SNAPSHOT/welcome
+
 // http://localhost:8080/court/reservationQuery
 // Configure Apache Tomcat in Intellij IDEA community edition
 // https://www.youtube.com/watch?v=iuR22ADTNk8
@@ -34,7 +36,7 @@ public class CourtServletContainerInitializer implements ServletContainerInitial
 
         DispatcherServlet dispatcherServlet = new DispatcherServlet(applicationContext);
 
-        ServletRegistration.Dynamic courtRegistration = ctx.addServlet("court", dispatcherServlet);
+        ServletRegistration.Dynamic courtRegistration = ctx.addServlet("app", dispatcherServlet);
         courtRegistration.setLoadOnStartup(1);
         courtRegistration.addMapping("/");
     }
