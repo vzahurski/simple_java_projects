@@ -1,4 +1,4 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
 <head>
@@ -7,6 +7,6 @@
 
 <body>
 <h2>Welcome to Court Reservation System</h2>
-Today is <fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/>.
+Today is ${today}.
 </body>
 </html>

@@ -1,5 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
 <head>
@@ -24,7 +23,7 @@
     <c:forEach items="${reservations}" var="reservation">
         <tr>
             <td>${reservation.courtName}</td>
-            <td><fmt:formatDate value="${reservation.dateAsUtilDate}" pattern="yyyy-MM-dd"/></td>
+            <td>${reservation.dateAsUtilDate}</td>
             <td>${reservation.hour}</td>
             <td>${reservation.player.name}</td>
         </tr>

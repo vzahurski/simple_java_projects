@@ -3,8 +3,8 @@ plugins {
 }
 
 // Это переменные из плагина java, показывают, какая версия jdk нам нужна при сборке
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_1_9
+targetCompatibility = JavaVersion.VERSION_1_9
 
 compileJava.options.encoding = 'UTF-8'
 tasks.withType(JavaCompile) {
@@ -16,7 +16,7 @@ tasks.withType(JavaCompile) {
 apply plugin:'war'
 
 war {
-    archiveName 'app.war'
+    archiveName 'court.war'
 }
 
 group 'simple_java_projects'

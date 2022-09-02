@@ -36,7 +36,7 @@ public class CourtServletContainerInitializer implements ServletContainerInitial
 
         DispatcherServlet dispatcherServlet = new DispatcherServlet(applicationContext);
 
-        ServletRegistration.Dynamic courtRegistration = ctx.addServlet("app", dispatcherServlet);
+        ServletRegistration.Dynamic courtRegistration = ctx.addServlet("court", dispatcherServlet);
         courtRegistration.setLoadOnStartup(1);
         courtRegistration.addMapping("/");
     }
