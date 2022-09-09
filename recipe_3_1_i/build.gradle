@@ -35,6 +35,11 @@ dependencies { // Этот блок содержит зависимости на
     implementation 'org.springframework:spring-web:5.3.22'
     implementation 'org.springframework:spring-webmvc:5.3.22'
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation 'javax.servlet:jstl:1.2'   // Эта jstl зависимость подключается в начале jsp-файлов, чтобы использовать
+    // JSP директиву taglib с URI "http://java.sun.com/jsp/jstl/fmt" и "http://java.sun.com/jsp/jstl/core"
+    // подробно об этом смотри смотри стр 544. JSP STANDARD TAG LIBRARY в книге  Java EPAM Блинов Методы программирования 2013.pdf
+    // Без подключения этой зависимости у меня проект компилировался но при переходе на ссылку http://localhost:8080/court/welcome
+    // получал ошубку не найден 404
 }
 
 test {

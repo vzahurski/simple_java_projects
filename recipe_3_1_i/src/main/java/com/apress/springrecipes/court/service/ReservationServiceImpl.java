@@ -11,14 +11,16 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+// @Service содержит внутри себя @Component для создания бина. Технически достаточно @Component, но для чтения человеком
+// дучше указать, что это сервис.
 @Service
 public class ReservationServiceImpl implements ReservationService {
-
+    // Две константы типа SportType
     public static final SportType TENNIS = new SportType(1, "Tennis");
     public static final SportType SOCCER = new SportType(2, "Soccer");
 
     private final List<Reservation> reservations = new ArrayList<>();
-
+    // Все объекты класса ReservationServiceImpl содержат один и тот же список бронирований
     public ReservationServiceImpl() {
 
         reservations.add(new Reservation("Tennis #1", LocalDate.of(2008, 1, 14), 16,
@@ -27,6 +29,7 @@ public class ReservationServiceImpl implements ReservationService {
                 new Player("James", "N/A"), TENNIS));
     }
 
+    // Реализация метода интерфейса
     @Override
     public List<Reservation> query(String courtName) {
 

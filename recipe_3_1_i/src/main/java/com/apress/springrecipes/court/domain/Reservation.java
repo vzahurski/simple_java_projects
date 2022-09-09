@@ -4,7 +4,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
-// Бронирование
+// Объект предметной области Бронирование
+// в пакете domain определяем сущности-объекты предметной области
 public class Reservation {
     private String courtName;
     private LocalDate date;

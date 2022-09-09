@@ -1,5 +1,7 @@
 package com.apress.springrecipes.court.domain;
 
+// Объект предметной области Вид спорта
+// в пакете domain определяем сущности-объекты предметной области
 public class SportType {
 
     private int id;

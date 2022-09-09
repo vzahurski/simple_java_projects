@@ -1,5 +1,8 @@
 package com.apress.springrecipes.court.domain;
 
+// Объект предметной области Игрок
+// в пакете domain определяем сущности-объекты предметной области
+
 public class Player {
 
     private String name;
